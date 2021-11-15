@@ -1,0 +1,11 @@
+<div class = "col-12 mt-4">
+<h1>Park a car</h1>
+<%= simple_form_for @car do |f| %>
+  <%= f.input :name %>
+  <%= f.input :entry_time, input_html: {value: f.object.entry_time || "#{Date.today}"} %>
+  <%= f.submit "Park car", class: "btn btn-primary" %>
+<% end %>
+<div class="text-right">
+<%= link_to "back", root_path %>
+</div>
+</div>

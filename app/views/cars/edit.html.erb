@@ -1,0 +1,10 @@
+<div class = "col-12 mt-4">
+<h1><%= @car.name %></h1>
+<%= simple_form_for @car do |f| %>
+  <%= f.input :bye_time, input_html: {value: f.object.bye_time || "#{Date.today}"} %>
+  <%= f.submit "Unpark #{@car.name}", class: "btn btn-primary" %>
+<% end %>
+<div class="text-right">
+<%= link_to "back", root_path %>
+</div>
+</div>

@@ -1,0 +1,29 @@
+<div class = "container-fluid text-center mt-4">
+<h1 class="text-center">List of cars</h1>
+<div class="text-center mt-4 mb-4"><%= link_to "+ añadir coche", new_car_path, class: "btn btn-primary btn-block" %></div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Car</th>
+      <th scope="col">Arrival</th>
+      <th scope="col">Departure</th>
+      <th scope="col">Days</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cars.reverse().each do |car| %>
+      <tr>
+        <th scope="row"><%= link_to "#{car.name}", edit_car_path(car), method: :get %></th>
+        <td><%= car.entry_time %></td>
+        <td><%= car.bye_time == nil ? "-" : car.bye_time %></td>
+        <td><%= car.bye_time == nil ? (Date.today - Date.parse(car.entry_time)).to_i.to_s : (Date.parse(car.bye_time)- Date.parse(car.entry_time)).to_i.to_s %></td>
+        <td><%= link_to "Delete",
+                car_path(car),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
